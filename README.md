@@ -19,6 +19,8 @@ A [Loki](https://grafana.com/oss/loki/) Handler for [slog](https://pkg.go.dev/go
 - [slog-logstach](https://github.com/samber/slog-logstach): A `slog` handler for `Logstach`
 - [slog-slack](https://github.com/samber/slog-slack): A `slog` handler for `Slack`
 - [slog-sentry](https://github.com/samber/slog-sentry): A `slog` handler for `Sentry`
+- [slog-fluentd](https://github.com/samber/slog-fluentd): A `slog` handler for `Fluentd`
+- [slog-syslog](https://github.com/samber/slog-syslog): A `slog` handler for `Syslog`
 
 ## 🚀 Install
 
