@@ -16,6 +16,7 @@ A [Loki](https://grafana.com/oss/loki/) Handler for [slog](https://pkg.go.dev/go
 
 - [slog-multi](https://github.com/samber/slog-multi): workflows of `slog` handlers (pipeline, fanout, ...)
 - [slog-formatter](https://github.com/samber/slog-formatter): `slog` attribute formatting
+- [slog-gin](https://github.com/samber/slog-gin): Gin middleware for `slog` logger
 - [slog-datadog](https://github.com/samber/slog-datadog): A `slog` handler for `Datadog`
 - [slog-logstash](https://github.com/samber/slog-logstash): A `slog` handler for `Logstash`
 - [slog-slack](https://github.com/samber/slog-slack): A `slog` handler for `Slack`
