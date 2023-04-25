@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/afiskon/promtail-client v0.0.0-20190305142237-506f3f921e9c
-	golang.org/x/exp v0.0.0-20230321023759-10a507213a29
+	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 )
 
 require (
