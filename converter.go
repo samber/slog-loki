@@ -40,7 +40,7 @@ func attrToValue(base string, attr slog.Attr, labels *map[string]string) {
 	case slog.KindDuration:
 		(*labels)[base+k] = v.Duration().String()
 	case slog.KindTime:
-		(*labels)[base+k] = v.Time().String()
+		(*labels)[base+k] = v.Time().UTC().String()
 	default:
 		(*labels)[base+k] = anyValueToString(v)
 	}
