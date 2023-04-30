@@ -14,7 +14,7 @@ A [Loki](https://grafana.com/oss/loki/) Handler for [slog](https://pkg.go.dev/go
 
 **See also:**
 
-- [slog-multi](https://github.com/samber/slog-formatter): `slog.Handler` chaining, fanout, routing, failover, load balancing...
+- [slog-multi](https://github.com/samber/slog-multi): `slog.Handler` chaining, fanout, routing, failover, load balancing...
 - [slog-formatter](https://github.com/samber/slog-formatter): `slog` attribute formatting
 - [slog-gin](https://github.com/samber/slog-gin): Gin middleware for `slog` logger
 - [slog-echo](https://github.com/samber/slog-echo): Echo middleware for `slog` logger
