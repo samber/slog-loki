@@ -79,7 +79,7 @@ import (
 )
 
 func main() {
-	endpoint := "localhost:3100"
+	endpoint := "http://localhost:3100"
 
 	logger := slog.New(slogloki.Option{Level: slog.LevelDebug, Endpoint: endpoint}.NewLokiHandler())
     logger = logger.
