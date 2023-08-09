@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	"log/slog"
+
 	"github.com/afiskon/promtail-client/promtail"
-	"golang.org/x/exp/slog"
 )
 
 type Option struct {

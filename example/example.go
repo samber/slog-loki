@@ -3,7 +3,7 @@ package main
 import (
 	slogloki "github.com/samber/slog-loki"
 
-	"golang.org/x/exp/slog"
+	"log/slog"
 )
 
 func main() {

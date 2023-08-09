@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"golang.org/x/exp/slog"
+	"log/slog"
 )
 
 func attrToLabelMap(base string, attrs []slog.Attr, labels *map[string]string) {

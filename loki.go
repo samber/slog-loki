@@ -1,8 +1,9 @@
 package slogloki
 
 import (
+	"log/slog"
+
 	"github.com/afiskon/promtail-client/promtail"
-	"golang.org/x/exp/slog"
 )
 
 var logLevelConverter = map[slog.Level]promtail.LogLevel{
