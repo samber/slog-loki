@@ -60,6 +60,8 @@ func (o Option) getLabels(level slog.Level) string {
 	return mapToLabels(labels)
 }
 
+var _ slog.Handler = (*LokiHandler)(nil)
+
 type LokiHandler struct {
 	option  Option
 	clients map[slog.Level]promtail.Client
