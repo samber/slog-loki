@@ -56,7 +56,7 @@ GoDoc: [https://pkg.go.dev/github.com/samber/slog-loki](https://pkg.go.dev/githu
 type Option struct {
 	// log level (default: debug)
 	Level slog.Leveler
-
+	
 	// loki endpoint
 	Endpoint string
 	// log batching
@@ -81,15 +81,15 @@ func main() {
 	endpoint := "http://localhost:3100"
 
 	logger := slog.New(slogloki.Option{Level: slog.LevelDebug, Endpoint: endpoint}.NewLokiHandler())
-    logger = logger.
-        With("environment", "dev").
-        With("release", "v1.0.0")
+	logger = logger.
+		With("environment", "dev").
+		With("release", "v1.0.0")
 
-    // log error
-    logger.Error("caramba!")
+	// log error
+	logger.Error("caramba!")
 
-    // log user signup
-    logger.Info("user registration")
+	// log user signup
+	logger.Info("user registration")
 }
 ```
 
