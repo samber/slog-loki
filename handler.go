@@ -8,6 +8,7 @@ import (
 	"log/slog"
 
 	"github.com/afiskon/promtail-client/promtail"
+	slogcommon "github.com/samber/slog-common"
 )
 
 type Option struct {
@@ -93,7 +94,7 @@ func (h *LokiHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
 		Endpoint:           h.option.Endpoint,
 		BatchWait:          h.option.BatchWait,
 		BatchEntriesNumber: h.option.BatchEntriesNumber,
-		attrs:              appendAttrsToGroup(h.option.groups, h.option.attrs, attrs),
+		attrs:              slogcommon.AppendAttrsToGroup(h.option.groups, h.option.attrs, attrs...),
 		groups:             h.option.groups,
 	}
 

@@ -1,12 +1,13 @@
 package slogloki
 
 import (
-	"encoding"
 	"fmt"
 	"strconv"
 	"strings"
 
 	"log/slog"
+
+	slogcommon "github.com/samber/slog-common"
 )
 
 func attrToLabelMap(base string, attrs []slog.Attr, labels *map[string]string) {
@@ -22,9 +23,9 @@ func attrToValue(base string, attr slog.Attr, labels *map[string]string) {
 
 	switch kind {
 	case slog.KindAny:
-		(*labels)[base+k] = anyValueToString(v)
+		(*labels)[base+k] = slogcommon.AnyValueToString(v)
 	case slog.KindLogValuer:
-		(*labels)[base+k] = anyValueToString(v)
+		(*labels)[base+k] = slogcommon.AnyValueToString(v)
 	case slog.KindGroup:
 		attrToLabelMap(base+k+".", v.Group(), labels)
 	case slog.KindInt64:
@@ -42,21 +43,8 @@ func attrToValue(base string, attr slog.Attr, labels *map[string]string) {
 	case slog.KindTime:
 		(*labels)[base+k] = v.Time().UTC().String()
 	default:
-		(*labels)[base+k] = anyValueToString(v)
+		(*labels)[base+k] = slogcommon.AnyValueToString(v)
 	}
-}
-
-func anyValueToString(v slog.Value) string {
-	if tm, ok := v.Any().(encoding.TextMarshaler); ok {
-		data, err := tm.MarshalText()
-		if err != nil {
-			return ""
-		}
-
-		return string(data)
-	}
-
-	return fmt.Sprintf("%+v", v.Any())
 }
 
 func mapToLabels(input map[string]string) string {
