@@ -1,7 +1,7 @@
 package main
 
 import (
-	slogloki "github.com/samber/slog-loki"
+	slogloki "github.com/samber/slog-loki/v2"
 
 	"log/slog"
 )
