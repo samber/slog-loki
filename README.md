@@ -60,23 +60,26 @@ GoDoc: [https://pkg.go.dev/github.com/samber/slog-loki/v2](https://pkg.go.dev/gi
 type Option struct {
 	// log level (default: debug)
 	Level slog.Leveler
-	
-	// loki endpoint
-	Endpoint string
-	// log batching
-	BatchWait          time.Duration
-	BatchEntriesNumber int
+
+	// loki
+	Client *loki.Client
+
+	// optional: customize webhook event builder
+	Converter Converter
+
+	// optional: see slog.HandlerOptions
+	AddSource   bool
+ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
 }
 ```
 
 Attributes will be injected in log payload.
 
-Attributes added to records are not accepted.
-
 Other global parameters:
 
 ```go
-slogloki.LogLevels = map[slog.Level]promtail.LogLevel{...}
+slogzerolog.SourceKey = "source"
+slogzerolog.ErrorKeys = []string{"error", "err"}
 ```
 
 ### Example
@@ -88,9 +91,12 @@ import (
 )
 
 func main() {
-	endpoint := "http://localhost:3100/api/prom/push"
+	// setup loki client
+	config, _ := loki.NewDefaultConfig("http://localhost:3100")
+	config.TenantID = "xyz"
+	client, _ := loki.New(config)
 
-	logger := slog.New(slogloki.Option{Level: slog.LevelDebug, Endpoint: endpoint}.NewLokiHandler())
+	logger := slog.New(slogloki.Option{Level: slog.LevelDebug, Client: client}.NewLokiHandler())
 	logger = logger.
 		With("environment", "dev").
 		With("release", "v1.0.0")
@@ -100,6 +106,9 @@ func main() {
 
 	// log user signup
 	logger.Info("user registration")
+
+	// stop loki client and purge buffers
+	client.Stop()
 }
 ```
 
