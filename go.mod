@@ -5,7 +5,6 @@ go 1.21
 require (
 	github.com/afiskon/promtail-client v0.0.0-20190305142237-506f3f921e9c
 	github.com/samber/slog-common v0.11.0
-	go.uber.org/goleak v1.2.1
 )
 
 require (
