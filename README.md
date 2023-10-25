@@ -73,6 +73,12 @@ Attributes will be injected in log payload.
 
 Attributes added to records are not accepted.
 
+Other global parameters:
+
+```go
+slogloki.LogLevels = map[slog.Level]promtail.LogLevel{...}
+```
+
 ### Example
 
 ```go

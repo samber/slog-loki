@@ -34,7 +34,7 @@ func (o Option) NewLokiHandler() slog.Handler {
 	}
 
 	clients := map[slog.Level]promtail.Client{}
-	for k, v := range logLevelConverter {
+	for k, v := range LogLevels {
 		conf := promtail.ClientConfig{
 			PushURL:            o.Endpoint,
 			BatchWait:          o.BatchWait,
