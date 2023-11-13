@@ -1,4 +1,4 @@
-module github.com/samber/slog-loki/v2
+module github.com/samber/slog-loki/v3
 
 go 1.21
 

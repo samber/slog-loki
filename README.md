@@ -43,16 +43,16 @@ A [Loki](https://grafana.com/oss/loki/) Handler for [slog](https://pkg.go.dev/lo
 ## 🚀 Install
 
 ```sh
-go get github.com/samber/slog-loki/v2
+go get github.com/samber/slog-loki/v3
 ```
 
 **Compatibility**: go >= 1.21
 
-No breaking changes will be made to exported APIs before v3.0.0.
+No breaking changes will be made to exported APIs before v4.0.0.
 
 ## 💡 Usage
 
-GoDoc: [https://pkg.go.dev/github.com/samber/slog-loki/v2](https://pkg.go.dev/github.com/samber/slog-loki/v2)
+GoDoc: [https://pkg.go.dev/github.com/samber/slog-loki/v3](https://pkg.go.dev/github.com/samber/slog-loki/v3)
 
 ### Handler options
 
@@ -86,7 +86,7 @@ slogloki.ErrorKeys = []string{"error", "err"}
 
 ```go
 import (
-	slogloki "github.com/samber/slog-loki/v2"
+	slogloki "github.com/samber/slog-loki/v3"
 	"log/slog"
 )
 
