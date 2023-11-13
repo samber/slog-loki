@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	config, _ := loki.NewDefaultConfig("http://localhost:3100")
+	config, _ := loki.NewDefaultConfig("http://localhost:3100/loki/api/v1/push")
 	config.TenantID = "xyz"
 	client, _ := loki.New(config)
 
