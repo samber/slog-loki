@@ -69,7 +69,7 @@ type Option struct {
 
 	// optional: see slog.HandlerOptions
 	AddSource   bool
-ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
+	ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
 }
 ```
 
@@ -78,8 +78,8 @@ Attributes will be injected in log payload.
 Other global parameters:
 
 ```go
-slogzerolog.SourceKey = "source"
-slogzerolog.ErrorKeys = []string{"error", "err"}
+slogloki.SourceKey = "source"
+slogloki.ErrorKeys = []string{"error", "err"}
 ```
 
 ### Example
