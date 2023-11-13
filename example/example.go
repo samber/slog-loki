@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	endpoint := "http://localhost:3100"
+	endpoint := "http://localhost:3100/api/prom/push"
 
 	logger := slog.New(slogloki.Option{Level: slog.LevelDebug, Endpoint: endpoint}.NewLokiHandler())
 	logger = logger.With("release", "v1.0.0")
