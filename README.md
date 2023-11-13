@@ -43,16 +43,16 @@ A [Loki](https://grafana.com/oss/loki/) Handler for [slog](https://pkg.go.dev/lo
 ## 🚀 Install
 
 ```sh
-go get github.com/samber/slog-loki/v2
+go get github.com/samber/slog-loki/v3
 ```
 
 **Compatibility**: go >= 1.21
 
-No breaking changes will be made to exported APIs before v3.0.0.
+No breaking changes will be made to exported APIs before v4.0.0.
 
 ## 💡 Usage
 
-GoDoc: [https://pkg.go.dev/github.com/samber/slog-loki/v2](https://pkg.go.dev/github.com/samber/slog-loki/v2)
+GoDoc: [https://pkg.go.dev/github.com/samber/slog-loki/v3](https://pkg.go.dev/github.com/samber/slog-loki/v3)
 
 ### Handler options
 
@@ -60,37 +60,43 @@ GoDoc: [https://pkg.go.dev/github.com/samber/slog-loki/v2](https://pkg.go.dev/gi
 type Option struct {
 	// log level (default: debug)
 	Level slog.Leveler
-	
-	// loki endpoint
-	Endpoint string
-	// log batching
-	BatchWait          time.Duration
-	BatchEntriesNumber int
+
+	// loki
+	Client *loki.Client
+
+	// optional: customize webhook event builder
+	Converter Converter
+
+	// optional: see slog.HandlerOptions
+	AddSource   bool
+	ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
 }
 ```
 
 Attributes will be injected in log payload.
 
-Attributes added to records are not accepted.
-
 Other global parameters:
 
 ```go
-slogloki.LogLevels = map[slog.Level]promtail.LogLevel{...}
+slogloki.SourceKey = "source"
+slogloki.ErrorKeys = []string{"error", "err"}
 ```
 
 ### Example
 
 ```go
 import (
-	slogloki "github.com/samber/slog-loki/v2"
+	slogloki "github.com/samber/slog-loki/v3"
 	"log/slog"
 )
 
 func main() {
-	endpoint := "http://localhost:3100/api/prom/push"
+	// setup loki client
+	config, _ := loki.NewDefaultConfig("http://localhost:3100/loki/api/v1/push")
+	config.TenantID = "xyz"
+	client, _ := loki.New(config)
 
-	logger := slog.New(slogloki.Option{Level: slog.LevelDebug, Endpoint: endpoint}.NewLokiHandler())
+	logger := slog.New(slogloki.Option{Level: slog.LevelDebug, Client: client}.NewLokiHandler())
 	logger = logger.
 		With("environment", "dev").
 		With("release", "v1.0.0")
@@ -100,6 +106,9 @@ func main() {
 
 	// log user signup
 	logger.Info("user registration")
+
+	// stop loki client and purge buffers
+	client.Stop()
 }
 ```
 

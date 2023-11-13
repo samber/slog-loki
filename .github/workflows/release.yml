@@ -28,6 +28,9 @@ jobs:
     - name: Remove xxx_test.go files
       run: rm -rf *_test.go ./examples ./images
 
+    - name: Set library version in version.go
+      run: sed -i 's/VERSION/${{ inputs.semver }}/g' version.go
+
     # cleanup test dependencies
     - name: Cleanup dependencies
       run: go mod tidy
