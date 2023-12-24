@@ -81,6 +81,8 @@ Other global parameters:
 ```go
 slogloki.SourceKey = "source"
 slogloki.ErrorKeys = []string{"error", "err"}
+slogloki.SubAttributeSeparator = "__"
+slogloki.AttributeKeyInvalidCharReplacement = "_"
 ```
 
 ### Example
