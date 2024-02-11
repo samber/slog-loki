@@ -36,6 +36,10 @@ func (o Option) NewLokiHandler() slog.Handler {
 		panic(fmt.Errorf("missing *loki.Client"))
 	}
 
+	if o.Converter == nil {
+		o.Converter = DefaultConverter
+	}
+
 	return &LokiHandler{
 		option: o,
 		attrs:  []slog.Attr{},
@@ -56,12 +60,7 @@ func (h *LokiHandler) Enabled(_ context.Context, level slog.Level) bool {
 }
 
 func (h *LokiHandler) Handle(ctx context.Context, record slog.Record) error {
-	converter := DefaultConverter
-	if h.option.Converter != nil {
-		converter = h.option.Converter
-	}
-
-	attrs := converter(h.option.AddSource, h.option.ReplaceAttr, h.attrs, h.groups, &record)
+	attrs := h.option.Converter(h.option.AddSource, h.option.ReplaceAttr, h.attrs, h.groups, &record)
 
 	return h.option.Client.Handle(attrs, record.Time, record.Message)
 }
