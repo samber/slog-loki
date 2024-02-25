@@ -30,8 +30,8 @@ func DefaultConverter(addSource bool, replaceAttr func(groups []string, a slog.A
 	if addSource {
 		attrs = append(attrs, slogcommon.Source(SourceKey, record))
 	}
-	attrs = slogcommon.ReplaceAttrs(replaceAttr, []string{}, attrs...)
 	attrs = append(attrs, slog.String("level", record.Level.String()))
+	attrs = slogcommon.ReplaceAttrs(replaceAttr, []string{}, attrs...)
 
 	// handler formatter
 	output := slogcommon.AttrsToMap(attrs...)
