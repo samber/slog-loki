@@ -19,6 +19,8 @@ type Option struct {
 
 	// optional: customize webhook event builder
 	Converter Converter
+	// optional: fetch attributes from context
+	AttrFromContext []func(ctx context.Context) []slog.Attr
 
 	// optional: see slog.HandlerOptions
 	AddSource   bool
@@ -38,6 +40,10 @@ func (o Option) NewLokiHandler() slog.Handler {
 
 	if o.Converter == nil {
 		o.Converter = DefaultConverter
+	}
+
+	if o.AttrFromContext == nil {
+		o.AttrFromContext = []func(ctx context.Context) []slog.Attr{}
 	}
 
 	return &LokiHandler{
@@ -60,7 +66,8 @@ func (h *LokiHandler) Enabled(_ context.Context, level slog.Level) bool {
 }
 
 func (h *LokiHandler) Handle(ctx context.Context, record slog.Record) error {
-	attrs := h.option.Converter(h.option.AddSource, h.option.ReplaceAttr, h.attrs, h.groups, &record)
+	fromContext := slogcommon.ContextExtractor(ctx, h.option.AttrFromContext)
+	attrs := h.option.Converter(h.option.AddSource, h.option.ReplaceAttr, append(h.attrs, fromContext...), h.groups, &record)
 
 	return h.option.Client.Handle(attrs, record.Time, record.Message)
 }
