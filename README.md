@@ -103,6 +103,7 @@ slogloki.AttributeKeyInvalidCharReplacement = "_"
 
 ```go
 import (
+	"github.com/grafana/loki-client-go/loki"
 	slogloki "github.com/samber/slog-loki/v3"
 	"log/slog"
 )
