@@ -32,6 +32,7 @@ func DefaultConverter(addSource bool, replaceAttr func(groups []string, a slog.A
 	}
 	attrs = append(attrs, slog.String("level", record.Level.String()))
 	attrs = slogcommon.ReplaceAttrs(replaceAttr, []string{}, attrs...)
+	attrs = slogcommon.RemoveEmptyAttrs(attrs)
 
 	// handler formatter
 	output := slogcommon.AttrsToMap(attrs...)
