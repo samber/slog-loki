@@ -12,6 +12,21 @@
 
 A [Loki](https://grafana.com/oss/loki/) Handler for [slog](https://pkg.go.dev/log/slog) Go library.
 
+<div align="center">
+  <hr>
+  <sup><b>Sponsored by:</b></sup>
+  <br>
+  <a href="https://quickwit.io?utm_campaign=github_sponsorship&utm_medium=referral&utm_content=samber-slog-loki&utm_source=github">
+    <div>
+      <img src="https://github.com/samber/oops/assets/2951285/49aaaa2b-b8c6-4f21-909f-c12577bb6a2e" width="240" alt="Quickwit">
+    </div>
+    <div>
+      Cloud-native search engine for observability - An OSS alternative to Splunk, Elasticsearch, Loki, and Tempo.
+    </div>
+  </a>
+  <hr>
+</div>
+
 **See also:**
 
 - [slog-multi](https://github.com/samber/slog-multi): `slog.Handler` chaining, fanout, routing, failover, load balancing...
