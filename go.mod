@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/grafana/loki-client-go v0.0.0-20230116142646-e7494d0ef70c
 	github.com/prometheus/common v0.34.0
-	github.com/samber/slog-common v0.17.0
+	github.com/samber/slog-common v0.17.1
 	go.uber.org/goleak v1.2.1
 )
 
