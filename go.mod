@@ -6,7 +6,6 @@ require (
 	github.com/grafana/loki-client-go v0.0.0-20230116142646-e7494d0ef70c
 	github.com/prometheus/common v0.60.1
 	github.com/samber/slog-common v0.17.1
-	go.uber.org/goleak v1.3.0
 )
 
 require (
@@ -38,6 +37,7 @@ require (
 	github.com/samber/lo v1.44.0 // indirect
 	github.com/stretchr/testify v1.9.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/goleak v1.3.0 // indirect
 	golang.org/x/net v0.29.0 // indirect
 	golang.org/x/oauth2 v0.23.0 // indirect
 	golang.org/x/sys v0.25.0 // indirect
