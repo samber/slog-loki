@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/grafana/loki-client-go v0.0.0-20230116142646-e7494d0ef70c
-	github.com/prometheus/common v0.61.0
+	github.com/prometheus/common v0.62.0
 	github.com/samber/slog-common v0.18.1
 	go.uber.org/goleak v1.3.0
 )
@@ -44,7 +44,7 @@ require (
 	golang.org/x/text v0.21.0 // indirect
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect
 	google.golang.org/grpc v1.56.3 // indirect
-	google.golang.org/protobuf v1.35.2 // indirect
+	google.golang.org/protobuf v1.36.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
