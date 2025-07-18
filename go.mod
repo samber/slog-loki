@@ -1,6 +1,6 @@
 module github.com/samber/slog-loki/v3
 
-go 1.21
+go 1.23.0
 
 require (
 	github.com/grafana/loki-client-go v0.0.0-20230116142646-e7494d0ef70c
@@ -39,7 +39,7 @@ require (
 	github.com/stretchr/testify v1.10.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/net v0.35.0 // indirect
-	golang.org/x/oauth2 v0.25.0 // indirect
+	golang.org/x/oauth2 v0.27.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect
