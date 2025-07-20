@@ -69,7 +69,11 @@ func (h *LokiHandler) Handle(ctx context.Context, record slog.Record) error {
 	fromContext := slogcommon.ContextExtractor(ctx, h.option.AttrFromContext)
 	attrs := h.option.Converter(h.option.AddSource, h.option.ReplaceAttr, append(h.attrs, fromContext...), h.groups, &record)
 
-	return h.option.Client.Handle(attrs, record.Time, record.Message)
+	go func() {
+		_ = h.option.Client.Handle(attrs, record.Time, record.Message)
+	}()
+
+	return nil
 }
 
 func (h *LokiHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
