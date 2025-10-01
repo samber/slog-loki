@@ -4,4 +4,4 @@ package slogloki
 const name = "samber/slog-loki"
 
 // nolint:unused
-const version = "VERSION" // replaced by .github/workflows/release.yml
+const version = "v3.6.0" // replaced by .github/workflows/release.yml

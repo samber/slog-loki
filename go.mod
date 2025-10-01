@@ -7,7 +7,6 @@ require (
 	github.com/grafana/loki/pkg/push v0.0.0-20240912152814-63e84b476a9a
 	github.com/prometheus/common v0.63.0
 	github.com/samber/slog-common v0.19.0
-	go.uber.org/goleak v1.3.0
 )
 
 require (
@@ -39,6 +38,7 @@ require (
 	github.com/samber/lo v1.51.0 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/goleak v1.3.0 // indirect
 	golang.org/x/exp v0.0.0-20240325151524-a685a6edb6d8 // indirect
 	golang.org/x/net v0.35.0 // indirect
 	golang.org/x/oauth2 v0.25.0 // indirect
