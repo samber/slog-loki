@@ -27,22 +27,10 @@ type Option struct {
 	AddSource   bool
 	ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
 
-	// When set to true, this handler sends record attributes as structured metadata. To send all record attributes as structured metadata,
-	// use the RemoveAttrsConverter along with this option set to true.
+	// By default, LokiHandler.Handle sends record attributes as labels to Loki.
+	// When set to true, this handler sends record attributes as structured metadata.
 	//
-	// In Loki, labels are key-value pairs used to index and filter log streams.
-	// They enable powerful querying but must remain in low cardinality to maintain performance.
-	//
-	// By default, LokiHandler.Handle sends all log record attributes as labels to Loki.
-	// This works well for common, low-cardinality fields like service name, log level, environment, etc.
-	//
-	// However, in some cases, you may want to include high-cardinality metadata, such as request IDs, user IDs, or session tokens, for improved debugging and traceability.
-	//
-	// Starting with schema version 13, Loki introduced structured metadata, allowing high-cardinality attributes to be attached to log records without indexation.
-	// This helps preserve Loki’s performance while improving traceability and logging capabilities.
-	//
-	// Note: Attributes added via LokiHandler.WithAttrs are always sent as labels, regardless of the value of this setting.
-	// If set to false (default), the handler will not send record attributes as structured metadata.
+	// Combine with RemoveAttrsConverter to avoid sending attributes as labels.
 	//
 	// Learn more about structured metadata in Loki:
 	// https://grafana.com/docs/loki/latest/get-started/labels/structured-metadata/
