@@ -43,6 +43,18 @@ func DefaultConverter(addSource bool, replaceAttr func(groups []string, a slog.A
 	return labelSet
 }
 
+// This converter removes all record attributes, sending only the fixed logger attributes as labels.
+//
+// Use this converter along with Option.HandleRecordsWithMetadata set to true to send record attributes
+// as structured metadata.
+//
+// See https://grafana.com/docs/loki/latest/get-started/labels/structured-metadata/ to know more about structured metadata in Loki.
+func RemoveAttrsConverter(addSource bool, replaceAttr func(groups []string, a slog.Attr) slog.Attr, loggerAttr []slog.Attr, groups []string, record *slog.Record) model.LabelSet {
+	// create a clean copy of the record without attributes
+	cleanRecord := slog.NewRecord(record.Time, record.Level, record.Message, record.PC)
+	return DefaultConverter(addSource, replaceAttr, loggerAttr, groups, &cleanRecord)
+}
+
 // https://stackoverflow.com/questions/64419565/how-to-efficiently-flatten-a-map
 func flatten(prefix string, src map[string]any, dest model.LabelSet) {
 	if len(prefix) > 0 {
