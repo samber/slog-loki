@@ -103,9 +103,11 @@ type Option struct {
 	AddSource   bool
 	ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
 	
-	// By default, LokiHandler.Handle sends all log record attributes as labels to Loki.
-	// When set to true, this handler sends record attributes as structured metadata instead of labels.
-	HandleRecordAttrsAsStructuredMetadata bool
+	// By default, LokiHandler.Handle sends record attributes as labels to Loki.
+	// When set to true, this handler sends record attributes as structured metadata.
+	// 
+	// Combine with RemoveAttrsConverter to avoid sending attributes as labels.
+	HandleRecordsWithMetadata bool
 }
 ```
 
