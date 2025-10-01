@@ -153,7 +153,7 @@ func main() {
 }
 ```
 
-With structured metadata enabled, record attributes are sent as structured metadata instead of labels:
+To send record attributes as structured metadata (instead of labels), use the `HandleRecordsWithMetadata` option along with the `RemoveAttrsConverter` converter:
 
 ```go
 import (
@@ -168,12 +168,13 @@ func main() {
 	config.TenantID = "xyz"
 	client, _ := loki.New(config)
 
-	// With structured metadata enabled, attributes are not sent as labels, thus
+	// With slogloki.RemoveAttrsConverter and HandleRecordsWithMetadata enabled, attributes are not sent as labels, thus
 	// allowing to log high-cardinality metadata without impacting performance.
 	o := slogloki.Option{
-		HandleRecordAttrsAsStructuredMetadata: true,
-		Level:                                 slog.LevelDebug,
-		Client:                                client,
+		HandleRecordsWithMetadata: true,
+		Converter:                 slogloki.RemoveAttrsConverter,
+		Level:                     slog.LevelDebug,
+		Client:                    client,
 	}
 	logger := slog.New(o.NewLokiHandler())
 
