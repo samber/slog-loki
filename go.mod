@@ -6,7 +6,7 @@ require (
 	github.com/grafana/loki-client-go v0.0.0-20251015150631-c42bbddc310a
 	github.com/grafana/loki/pkg/push v0.0.0-20240912152814-63e84b476a9a
 	github.com/prometheus/common v0.67.5
-	github.com/samber/slog-common v0.19.0
+	github.com/samber/slog-common v0.20.0
 	go.uber.org/goleak v1.3.0
 )
 
@@ -38,7 +38,7 @@ require (
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/prometheus/prometheus v0.35.0 // indirect
-	github.com/samber/lo v1.51.0 // indirect
+	github.com/samber/lo v1.52.0 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
