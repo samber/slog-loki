@@ -6,7 +6,7 @@ require (
 	github.com/grafana/loki-client-go v0.0.0-20251015150631-c42bbddc310a
 	github.com/grafana/loki/pkg/push v0.0.0-20240912152814-63e84b476a9a
 	github.com/prometheus/common v0.67.5
-	github.com/samber/slog-common v0.21.0
+	github.com/samber/slog-common v0.22.0
 	go.uber.org/goleak v1.3.0
 )
 
